@@ -31,6 +31,11 @@
         transform: scale(1.3) rotate(340deg) translateX(150px) translateY(-200px);
     }
     
+    .played-card {
+        right: 25px;
+        transform: scale(1.3) rotate(340deg) translateX(150px) translateY(-200px);
+    }
+    
     @keyframes pick-card-animation {
         0% {
             transform: scale(1);
@@ -44,4 +49,9 @@
         100% {
             transform: scale(1.3) rotate(340deg) translateX(150px) translateY(-200px);
         }
+    }
+    
+    .player-position {
+        position: absolute;
+        right: 0;
     }

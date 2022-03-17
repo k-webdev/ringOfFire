@@ -1,0 +1,18 @@
+.player-design-sort {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 32px;
+    border-top-left-radius: 32px;
+    span {
+        font-size: 21px;
+        margin-left: 32px;
+        color: white;
+    }
+    img {
+        padding-left: 16px;
+        width: 50px;
+    }
+}
