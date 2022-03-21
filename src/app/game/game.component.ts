@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/game/game';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+
 
 @Component({
   selector: 'app-game',
@@ -9,35 +12,46 @@ import { Game } from 'src/game/game';
 export class GameComponent implements OnInit {
 
   takeCardAnimation = false;
-  currendCard: String = '';
-  playedCard:string = '';
+  currentCard: string = '';
+  playedCard: string = '';
   game: Game;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
   }
 
-  newGame(){
+  newGame() {
     this.game = new Game();
     console.log(this.game);
     ;
   }
 
-  takeCard(){
-    if(!this.takeCardAnimation){
+  takeCard() {
+    if (!this.takeCardAnimation) {
 
-    
-    this.currendCard = this.game.stack.pop();//pop nimmt den letzten Wert eines Arrays und entfernt ihn aus dem Array.
-    console.log(this.currendCard);
-    this.takeCardAnimation = true;
-      
-    setTimeout(()=>{
-      this.game.playedCard.push(this.currendCard);
-      this.takeCardAnimation = false;
-    },2500);
+
+      this.currentCard = this.game.stack.pop();//pop nimmt den letzten Wert eines Arrays und entfernt ihn aus dem Array.
+      console.log(this.currentCard);
+      this.takeCardAnimation = true;
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+
+      setTimeout(() => {
+        this.game.playedCard.push(this.currentCard);
+        this.takeCardAnimation = false;
+      }, 2500);
+    }
   }
-}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
+    dialogRef.afterClosed().subscribe(name => {
+      if(name && name.length > 0){
+     this.game.players.push(name);
+      }
+    });
+
+  }
 }

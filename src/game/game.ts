@@ -1,5 +1,5 @@
 export class Game{
-    public players = ['Dennis', 'Dina', 'Groot', 'Zen-oh'];
+    public players = [];
     public stack = [];
     public playedCard = [];
     public currentPlayer = 0;

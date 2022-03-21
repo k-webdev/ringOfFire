@@ -1,0 +1,9 @@
+<mat-card class="info-card">
+    <mat-card-title>
+        {{ card ? title : 'Please pick a card.' }}
+        <!-- Schnellform einer IFelse abfrage (Wenn card = true dann title. ansonsten 'please pick a card') -->
+    </mat-card-title>
+    <mat-card-content>
+        {{ card ? description : 'Please click on the cardstack to select the next card.' }}
+    </mat-card-content>
+</mat-card>
